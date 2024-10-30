@@ -1,3 +1,8 @@
+refer this webpage
+
+https://www.packetswitch.co.uk/how-to-install-netbox-on-docker/
+
+
 # netbox-docker
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/netbox-community/netbox-docker)][github-release]

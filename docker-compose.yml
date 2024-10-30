@@ -17,6 +17,9 @@ services:
       - netbox-media-files:/opt/netbox/netbox/media:rw
       - netbox-reports-files:/opt/netbox/netbox/reports:rw
       - netbox-scripts-files:/opt/netbox/netbox/scripts:rw
+    restart: always  # Added restart policy
+
+
   netbox-worker:
     <<: *netbox
     depends_on:
@@ -31,6 +34,9 @@ services:
       start_period: 20s
       timeout: 3s
       interval: 15s
+    restart: always  # Added restart policy
+
+
   netbox-housekeeping:
     <<: *netbox
     depends_on:
@@ -43,6 +49,7 @@ services:
       start_period: 20s
       timeout: 3s
       interval: 15s
+    restart: always  # Added restart policy
 
   # postgres
   postgres:
@@ -56,6 +63,7 @@ services:
     env_file: env/postgres.env
     volumes:
       - netbox-postgres-data:/var/lib/postgresql/data
+    restart: always  # Added restart policy
 
   # redis
   redis:
@@ -73,6 +81,8 @@ services:
     env_file: env/redis.env
     volumes:
       - netbox-redis-data:/data
+    restart: always  # Added restart policy
+
   redis-cache:
     image: docker.io/valkey/valkey:8.0-alpine
     command:
@@ -83,6 +93,7 @@ services:
     env_file: env/redis-cache.env
     volumes:
       - netbox-redis-cache-data:/data
+    restart: always  # Added restart policy
 
 volumes:
   netbox-media-files:
